@@ -12,15 +12,16 @@ Built a multi-stage fact-checking pipeline for climate science claims, covering 
 
 - Method: Bi-Encoder retrieval, Cross-Encoder reranking, Transformer / open-source LLM verification, hard negative sampling
 - Evaluation: public evaluation rank 5; H-mean 0.35, Evidence Retrieval F-score 0.26, Claim Classification Accuracy 0.57
-- Repository: `climate-claim-verification-rag`
+- Repository: [`climate-claim-verification-rag`](https://github.com/larry-liyuanfan/climate-claim-verification-rag)
 
-### Optimization Solver Reproducibility
+### Fulfillment Optimization Decision Support
 
-Sanitized optimisation engineering project for diagnosing cross-environment solver discrepancies in a two-stage sequential benchmark.
+Built a full decision-optimization pipeline for e-commerce order-wave release and workforce scheduling, from baseline data generation to integrated MIP modeling, scenario experiments, and solver reproducibility audit.
 
-- Method: repeated-run consistency checks, validation auditing, solver environment comparison, Stage-1 objective diagnostics
-- Result: traced a 43.76 downstream cost gap to 2 extra temporary-worker hours under Stage-1-equivalent release plans
-- Repository: `optimization-solver-reproducibility`
+- Method: Gurobi mixed-integer programming, sequential exact benchmark, scenario simulation, validation checks, replication study
+- Result: reduced labor cost by 2.58%-13.55% across four scenarios; integrated model was cheaper in 39/40 replicated instances with zero late orders
+- Demo: [`GitHub Pages`](https://larry-liyuanfan.github.io/fulfillment-optimization-decision-support/)
+- Repository: [`fulfillment-optimization-decision-support`](https://github.com/larry-liyuanfan/fulfillment-optimization-decision-support)
 
 ### Geospatial Burn-window Demo
 
@@ -28,7 +29,7 @@ Public synthetic-data demo derived from a confidential prescribed-burn decision-
 
 - Method: toy gridded climate variables, rule-based suitability masks, limiting-factor analysis, threshold sensitivity analysis
 - Skills: Xarray/Dask-style geospatial data processing, NetCDF-style data modeling, interpretable decision-support outputs
-- Repository: `geospatial-burn-window-demo`
+- Repository: [`geospatial-burn-window-demo`](https://github.com/larry-liyuanfan/geospatial-burn-window-demo)
 
 ### HPC Social Language Count
 
@@ -36,7 +37,7 @@ Sanitized data-engineering portfolio project for parallel language counting over
 
 - Method: MPI map-reduce style counting, SLURM batch jobs, runtime comparison across node/core configurations
 - Skills: distributed data processing, semi-structured text parsing, scalable aggregation, performance evaluation
-- Repository: `hpc-social-language-count`
+- Repository: [`hpc-social-language-count`](https://github.com/larry-liyuanfan/hpc-social-language-count)
 
 ### Housing Safety Agent Analytics
 
@@ -50,7 +51,7 @@ Built a housing safety analytics prototype with ReAct-style data exploration and
 - LLM / NLP: RAG, ReAct Agent, BGE-M3, Bi-Encoder, Cross-Encoder, BERT
 - Data Science: statistical machine learning, retrieval evaluation, A/B testing, time-series analysis
 - Data Engineering: Python, SQL, Pandas, PySpark, Xarray, Dask, Elasticsearch, NetCDF
-- Optimization: solver validation, reproducibility diagnostics, Gurobi-style output analysis
+- Optimization: MIP modeling, Gurobi, solver validation, decision support, reproducibility diagnostics
 - Tools: Docker, Git, Fission Serverless, Claude Code, Copilot
 
 ## Contact
