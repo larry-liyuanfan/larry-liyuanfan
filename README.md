@@ -14,13 +14,21 @@ Built a multi-stage fact-checking pipeline for climate science claims, covering 
 - Evaluation: public evaluation rank 5; H-mean 0.35, Evidence Retrieval F-score 0.26, Claim Classification Accuracy 0.57
 - Repository: `climate-claim-verification-rag`
 
-### Confidential Wildfire Burn-window Decision Support
+### Geospatial Burn-window Demo
 
-Worked on a confidential research project for climate-driven prescribed-burn window analysis. Public details are limited because the original project data and requirements are private.
+Public synthetic-data demo derived from a confidential prescribed-burn decision-support project. The original research repository remains private; this demo only shows the transferable technical workflow.
 
-- Method: multi-variable climate-grid processing, rule-based suitability modeling, limiting-factor analysis, threshold sensitivity analysis
-- Transferable skills: Xarray/Dask-style geospatial data processing, NetCDF-style data modeling, interpretable decision-support outputs
-- Public demo: `geospatial-burn-window-demo` uses synthetic data to show the general workflow without exposing restricted materials
+- Method: toy gridded climate variables, rule-based suitability masks, limiting-factor analysis, threshold sensitivity analysis
+- Skills: Xarray/Dask-style geospatial data processing, NetCDF-style data modeling, interpretable decision-support outputs
+- Repository: `geospatial-burn-window-demo`
+
+### HPC Social Language Count
+
+Sanitized data-engineering portfolio project for parallel language counting over social-media-style NDJSON records on an HPC cluster.
+
+- Method: MPI map-reduce style counting, SLURM batch jobs, runtime comparison across node/core configurations
+- Skills: distributed data processing, semi-structured text parsing, scalable aggregation, performance evaluation
+- Repository: `hpc-social-language-count`
 
 ### Housing Safety Agent Analytics
 
