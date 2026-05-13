@@ -14,14 +14,13 @@ Built a multi-stage fact-checking pipeline for climate science claims, covering 
 - Evaluation: public evaluation rank 5; H-mean 0.35, Evidence Retrieval F-score 0.26, Claim Classification Accuracy 0.57
 - Repository: `climate-claim-verification-rag`
 
-### Wildfire Burn-window Decision Support
+### Confidential Wildfire Burn-window Decision Support
 
-Developed a prescribed-burn window analysis workflow over gridded climate data for Victoria, translating expert prescriptions into rule-based operational windows.
+Worked on a confidential research project for climate-driven prescribed-burn window analysis. Public details are limited because the original project data and requirements are private.
 
-- Data: VicClim6 NetCDF climate data, 1972-2024, Victoria, about 4 km grid resolution, hourly variables
-- Method: Xarray/Dask processing, variable alignment, burn suitability rules, limiting-factor analysis, threshold sensitivity analysis
-- Result: 2024 demo identified 6.49% all-condition burn windows and clear monthly/hourly operating patterns
-- Repository: `wildfire-burn-window-decision-support`
+- Method: multi-variable climate-grid processing, rule-based suitability modeling, limiting-factor analysis, threshold sensitivity analysis
+- Transferable skills: Xarray/Dask-style geospatial data processing, NetCDF-style data modeling, interpretable decision-support outputs
+- Public demo: `geospatial-burn-window-demo` uses synthetic data to show the general workflow without exposing restricted materials
 
 ### Housing Safety Agent Analytics
 
