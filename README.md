@@ -14,6 +14,15 @@ Built a multi-stage fact-checking pipeline for climate science claims, covering 
 - Evaluation: public evaluation rank 5; H-mean 0.35, Evidence Retrieval F-score 0.26, Claim Classification Accuracy 0.57
 - Repository: [`climate-claim-verification-rag`](https://github.com/larry-liyuanfan/climate-claim-verification-rag)
 
+### Movie Review Intelligence Dashboard
+
+Built a privacy-safe movie-review analytics project that converts semi-structured review data into movie-level aggregate features, LLM-ready evidence documents, and a static portfolio dashboard.
+
+- Method: public-release data audit, feature aggregation, sentiment-signal summarization, TF-IDF retrieval, prompt-ready recommendation context
+- Result: packaged 246 movie-level records and 246 retrieval documents without raw comments, usernames, profile URLs, or crawler artifacts
+- Demo: [`GitHub Pages`](https://larry-liyuanfan.github.io/movie-review-intelligence-dashboard/)
+- Repository: [`movie-review-intelligence-dashboard`](https://github.com/larry-liyuanfan/movie-review-intelligence-dashboard)
+
 ### Fulfillment Optimization Decision Support
 
 Built a full decision-optimization pipeline for e-commerce order-wave release and workforce scheduling, from baseline data generation to integrated MIP modeling, scenario experiments, and solver reproducibility audit.
@@ -48,8 +57,8 @@ Built a housing safety analytics prototype with ReAct-style data exploration and
 
 ## Technical Focus
 
-- LLM / NLP: RAG, ReAct Agent, BGE-M3, Bi-Encoder, Cross-Encoder, BERT
-- Data Science: statistical machine learning, retrieval evaluation, A/B testing, time-series analysis
+- LLM / NLP: RAG, ReAct Agent, retrieval evaluation, prompt-ready context generation, BGE-M3, Bi-Encoder, Cross-Encoder, BERT
+- Data Science: statistical machine learning, sentiment signals, A/B testing, time-series analysis
 - Data Engineering: Python, SQL, Pandas, PySpark, Xarray, Dask, Elasticsearch, NetCDF
 - Optimization: MIP modeling, Gurobi, solver validation, decision support, reproducibility diagnostics
 - Tools: Docker, Git, Fission Serverless, Claude Code, Copilot
