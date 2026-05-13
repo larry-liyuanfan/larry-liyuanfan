@@ -14,6 +14,14 @@ Built a multi-stage fact-checking pipeline for climate science claims, covering 
 - Evaluation: public evaluation rank 5; H-mean 0.35, Evidence Retrieval F-score 0.26, Claim Classification Accuracy 0.57
 - Repository: `climate-claim-verification-rag`
 
+### Optimization Solver Reproducibility
+
+Sanitized optimisation engineering project for diagnosing cross-environment solver discrepancies in a two-stage sequential benchmark.
+
+- Method: repeated-run consistency checks, validation auditing, solver environment comparison, Stage-1 objective diagnostics
+- Result: traced a 43.76 downstream cost gap to 2 extra temporary-worker hours under Stage-1-equivalent release plans
+- Repository: `optimization-solver-reproducibility`
+
 ### Geospatial Burn-window Demo
 
 Public synthetic-data demo derived from a confidential prescribed-burn decision-support project. The original research repository remains private; this demo only shows the transferable technical workflow.
@@ -42,6 +50,7 @@ Built a housing safety analytics prototype with ReAct-style data exploration and
 - LLM / NLP: RAG, ReAct Agent, BGE-M3, Bi-Encoder, Cross-Encoder, BERT
 - Data Science: statistical machine learning, retrieval evaluation, A/B testing, time-series analysis
 - Data Engineering: Python, SQL, Pandas, PySpark, Xarray, Dask, Elasticsearch, NetCDF
+- Optimization: solver validation, reproducibility diagnostics, Gurobi-style output analysis
 - Tools: Docker, Git, Fission Serverless, Claude Code, Copilot
 
 ## Contact
