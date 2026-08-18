@@ -1,67 +1,65 @@
 # Liyuan Fan
 
-Master of Data Science at the University of Melbourne, focused on LLM applications, RAG, agentic analytics, and data-driven decision support.
+Master of Data Science at the University of Melbourne, focused on **Multimodal Search, RAG and Agentic AI Applications**.
 
-I work on systems that turn messy domain data into searchable evidence, interpretable signals, and decision-ready outputs.
+I build evidence-grounded AI systems that connect multimodal understanding, multi-stage retrieval, tool-using agents, and deterministic domain services.
 
 ## Featured Projects
 
-### Climate Claim Verification RAG
+### 1. Trip — Multimodal Search and Travel Planning
 
-Built a multi-stage fact-checking pipeline for climate science claims, covering claim-evidence retrieval and four-way claim classification.
+Flagship OTA application that turns travel images, reviews, and user constraints into structured information, searchable candidates, and travel-planning inputs.
 
-- Method: Bi-Encoder retrieval, Cross-Encoder reranking, Transformer / open-source LLM verification, hard negative sampling
-- Evaluation: public evaluation rank 5; H-mean 0.35, Evidence Retrieval F-score 0.26, Claim Classification Accuracy 0.57
+- VLM-based image understanding and schema-constrained extraction
+- Visual, keyword, and hybrid retrieval with Milvus-backed serving
+- Versioned prompts, evaluation datasets, failure analysis, and experiment tracking
+- FastAPI, Docker, vLLM/Model Studio, Alibaba Cloud, and Spartan GPU workflows
+- Repository: [`Trip_Project`](https://github.com/larry-liyuanfan/Trip_Project)
+
+### 2. Australian Housing Intelligence Agent
+
+Agentic-search system built on a university team project's housing-discussion and official-evidence datasets. The public extension focuses on my implementation of safe tool use, evidence retrieval, and evaluation.
+
+- Typed tools and an explicit state machine for planning, execution, retries, loop detection, and empty-result recovery
+- Separate social-discussion and official-evidence retrieval with filters, hybrid search, fusion, and reranking adapters
+- Citation verification, trace inspection, cost/policy guards, and task-level Agent evaluation
+- FastAPI, Elasticsearch, Redis, Docker Compose, and Alibaba Cloud deployment assets
+- Repository: [`australian-housing-intelligence-agent`](https://github.com/larry-liyuanfan/australian-housing-intelligence-agent)
+
+### 3. Climate Claim Verification RAG
+
+Reproducible search-and-ranking laboratory for climate claim verification, separated from unsupported leaderboard claims.
+
+- BM25 and dense ANN recall, reciprocal-rank fusion, learning-to-rank features, and cross-encoder reranking adapters
+- Hard-negative mining, evidence selection, calibrated claim classification, and selective abstention
+- Retrieval, end-to-end, latency, index-size, and paired-bootstrap evaluation
+- CLI and Spartan/Slurm assets for full-data indexing and controlled ablation studies
 - Repository: [`climate-claim-verification-rag`](https://github.com/larry-liyuanfan/climate-claim-verification-rag)
 
-### Movie Review Intelligence Dashboard
+### 4. Wildfire Burn-window Decision Support
 
-Built a privacy-safe movie-review analytics project that converts semi-structured review data into movie-level aggregate features, LLM-ready evidence documents, and a static portfolio dashboard.
+Deterministic, explainable domain tools for agents operating over large spatiotemporal climate data.
 
-- Method: public-release data audit, feature aggregation, sentiment-signal summarization, TF-IDF retrieval, prompt-ready recommendation context
-- Result: packaged 246 movie-level records and 246 retrieval documents without raw comments, usernames, profile URLs, or crawler artifacts
-- Demo: [`GitHub Pages`](https://larry-liyuanfan.github.io/movie-review-intelligence-dashboard/)
-- Repository: [`movie-review-intelligence-dashboard`](https://github.com/larry-liyuanfan/movie-review-intelligence-dashboard)
+- Typed prescription rules, temporal alignment, continuous-window extraction, limiting-factor attribution, and sensitivity analysis
+- Xarray/Dask data pipeline with checkpointable Spartan execution assets
+- Constraint-aware scheduling with deterministic baselines and an optional MILP solver
+- Golden fixtures and invariant tests for tool schemas, rule boundaries, and feasible schedules
+- Repository: [`wildfire-burn-window-decision-support`](https://github.com/larry-liyuanfan/wildfire-burn-window-decision-support)
 
-### Fulfillment Optimization Decision Support
+### 5. Fulfillment Optimization Decision Support
 
-Built a full decision-optimization pipeline for e-commerce order-wave release and workforce scheduling, from baseline data generation to integrated MIP modeling, scenario experiments, and solver reproducibility audit.
+Reproducible decision-optimization pipeline for order-wave release and workforce scheduling.
 
-- Method: Gurobi mixed-integer programming, sequential exact benchmark, scenario simulation, validation checks, replication study
-- Result: reduced labor cost by 2.58%-13.55% across four scenarios; integrated model was cheaper in 39/40 replicated instances with zero late orders
-- Demo: [`GitHub Pages`](https://larry-liyuanfan.github.io/fulfillment-optimization-decision-support/)
+- Gurobi mixed-integer programming, exact baselines, scenario experiments, and solver validation
 - Repository: [`fulfillment-optimization-decision-support`](https://github.com/larry-liyuanfan/fulfillment-optimization-decision-support)
-
-### Geospatial Burn-window Demo
-
-Public synthetic-data demo derived from a confidential prescribed-burn decision-support project. The original research repository remains private; this demo only shows the transferable technical workflow.
-
-- Method: toy gridded climate variables, rule-based suitability masks, limiting-factor analysis, threshold sensitivity analysis
-- Skills: Xarray/Dask-style geospatial data processing, NetCDF-style data modeling, interpretable decision-support outputs
-- Repository: [`geospatial-burn-window-demo`](https://github.com/larry-liyuanfan/geospatial-burn-window-demo)
-
-### HPC Social Language Count
-
-Sanitized data-engineering portfolio project for parallel language counting over social-media-style NDJSON records on an HPC cluster.
-
-- Method: MPI map-reduce style counting, SLURM batch jobs, runtime comparison across node/core configurations
-- Skills: distributed data processing, semi-structured text parsing, scalable aggregation, performance evaluation
-- Repository: [`hpc-social-language-count`](https://github.com/larry-liyuanfan/hpc-social-language-count)
-
-### Housing Safety Agent Analytics
-
-Built a housing safety analytics prototype with ReAct-style data exploration and sentiment analysis. The public portfolio repository is pending because the source project is hosted on a private university GitLab.
-
-- Method: ReAct agent workflow, BERT/VADER sentiment signals, Elasticsearch retrieval, serverless data collection
-- Status: documentation will be published after source export and sanitization
+- Demo: [`GitHub Pages`](https://larry-liyuanfan.github.io/fulfillment-optimization-decision-support/)
 
 ## Technical Focus
 
-- LLM / NLP: RAG, ReAct Agent, retrieval evaluation, prompt-ready context generation, BGE-M3, Bi-Encoder, Cross-Encoder, BERT
-- Data Science: statistical machine learning, sentiment signals, A/B testing, time-series analysis
-- Data Engineering: Python, SQL, Pandas, PySpark, Xarray, Dask, Elasticsearch, NetCDF
-- Optimization: MIP modeling, Gurobi, solver validation, decision support, reproducibility diagnostics
-- Tools: Docker, Git, Fission Serverless, Claude Code, Copilot
+- Multimodal AI: VLM inference, image-text alignment, structured extraction, evaluation datasets
+- Search and RAG: BM25, dense ANN, hybrid retrieval, fusion, learning-to-rank, reranking, retrieval evaluation
+- Agentic AI: typed tool calling, explicit state machines, evidence verification, traces, failure recovery, Agent Eval
+- Systems: Python, FastAPI, Elasticsearch, Redis, Milvus, Docker, Slurm, Xarray, Dask
 
 ## Contact
 
