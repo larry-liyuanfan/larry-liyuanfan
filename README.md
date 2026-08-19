@@ -22,18 +22,20 @@ Agentic-search system built on a university team project's housing-discussion an
 
 - Typed tools and an explicit state machine for planning, execution, retries, loop detection, and empty-result recovery
 - Separate social-discussion and official-evidence retrieval with filters, hybrid search, fusion, and reranking adapters
-- Citation verification, trace inspection, cost/policy guards, and task-level Agent evaluation
-- FastAPI, Elasticsearch, Redis, Docker Compose, and Alibaba Cloud deployment assets
+- Citation verification, trace inspection, cost/policy guards, and a 100-task deterministic Agent contract suite
+- Isolated FastAPI + Elasticsearch + Redis + Prometheus stack on Alibaba Cloud SG; deidentified loopback fixture sustained 470.1 QPS at concurrency 10 with P95 42.30 ms, while Redis reduced HTTP P50 by 82.8% (infrastructure evidence, not a public SLA or relevance score)
 - Repository: [`australian-housing-intelligence-agent`](https://github.com/larry-liyuanfan/australian-housing-intelligence-agent)
 
 ### 3. Climate Claim Verification RAG
 
 Reproducible search-and-ranking laboratory for climate claim verification, separated from unsupported leaderboard claims.
 
-- BM25 and dense ANN recall, reciprocal-rank fusion, learning-to-rank features, and cross-encoder reranking adapters
-- Hard-negative mining, evidence selection, calibrated claim classification, and selective abstention
+- Verified Spartan build over 1,208,827 evidence passages: BM25 in 40.33 s (126.3 MB) and Qwen3-Embedding-0.6B 1,024-d vectors + FAISS FlatIP in 1,696.77 s (5.13 GB artifact, 21.54 GB MaxRSS)
+- BM25 and dense ANN recall, reciprocal-rank fusion, LambdaMART features, hard-negative mining, and cross-encoder reranking adapters
+- Evidence selection, calibrated claim classification, and selective abstention
 - Retrieval, end-to-end, latency, index-size, and paired-bootstrap evaluation
 - CLI and Spartan/Slurm assets for full-data indexing and controlled ablation studies
+- HNSW/IVF-PQ and fixed-dev LTR effects remain pending; no unverified relevance lift or leaderboard rank is claimed
 - Repository: [`climate-claim-verification-rag`](https://github.com/larry-liyuanfan/climate-claim-verification-rag)
 
 ### 4. Wildfire Burn-window Decision Support
@@ -42,8 +44,9 @@ Deterministic, explainable domain tools for agents operating over large spatiote
 
 - Typed prescription rules, temporal alignment, continuous-window extraction, limiting-factor attribution, and sensitivity analysis
 - Xarray/Dask data pipeline with checkpointable Spartan execution assets
-- Constraint-aware scheduling with deterministic baselines and an optional MILP solver
-- Golden fixtures and invariant tests for tool schemas, rule boundaries, and feasible schedules
+- Greedy, nominal MILP, and max-min robust MILP scheduling with an independent feasibility checker
+- In a 30-seed synthetic benchmark, nominal MILP improved mean utility by 1.79% over the best greedy baseline (bootstrap mean 95% interval 0.91%-2.77%); robust scheduling reduced mobilisation-penalty units by 2.55% (synthetic operational proxies, not dollars or realised fire-risk reduction)
+- Golden fixtures and 35 tests for tool schemas, rule boundaries, and feasible schedules
 - Repository: [`wildfire-burn-window-decision-support`](https://github.com/larry-liyuanfan/wildfire-burn-window-decision-support)
 
 ### 5. Fulfillment Optimization Decision Support
