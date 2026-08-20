@@ -16,26 +16,28 @@ Flagship OTA application that turns travel images, reviews, and user constraints
 - FastAPI, Docker, vLLM/Model Studio, Alibaba Cloud, and Spartan GPU workflows
 - Repository: [`Trip_Project`](https://github.com/larry-liyuanfan/Trip_Project)
 
-### 2. Australian Housing Intelligence Agent
+### 2. Australian Energy Market Intelligence Agent
 
-Agentic-search system built on a university team project's housing-discussion and official-evidence datasets. The public extension focuses on my implementation of safe tool use, evidence retrieval, and evaluation.
+Agentic decision-support system over official Australian National Electricity Market data: market retrieval, official-evidence search, price-risk forecasting, constrained battery dispatch, economic sensitivity and auditable answers.
 
-- Typed tools and an explicit state machine for planning, execution, retries, loop detection, and empty-result recovery
-- Separate social-discussion and official-evidence retrieval with filters, hybrid search, fusion, and reranking adapters
-- Citation verification, trace inspection, cost/policy guards, and a 100-task deterministic Agent contract suite
-- Isolated FastAPI + Elasticsearch + Redis + Prometheus stack on Alibaba Cloud SG; deidentified loopback fixture sustained 470.1 QPS at concurrency 10 with P95 42.30 ms, while Redis reduced HTTP P50 by 82.8% (infrastructure evidence, not a public SLA or relevance score)
-- Repository: [`australian-housing-intelligence-agent`](https://github.com/larry-liyuanfan/australian-housing-intelligence-agent)
+- Validated 525,600 five-minute AEMO rows across five NEM regions and repaired one incomplete daily archive only from official monthly MMSDM data
+- Indexed 735 AEMO/AER report chunks; hybrid+rerank reached source-routing MRR 0.967 and Recall@5 1.00 on a 20-query benchmark (BM25 MRR 0.892)
+- Eight typed tools, bounded state-machine recovery and durable traces; the 80 real-window + 20 fault-fixture suite achieved 100% task/schema/citation/logical-tool/recovery success
+- Four seasonal folds across five regions produced 560 out-of-time region-days. At 0/25/50/100 AUD per discharged MWh, the five-region mean annualised operating-margin proxy was AUD 76.6k/53.2k/41.0k/24.2k per MW-year; all five regional P05 values were negative at 50 AUD/MWh
+- Alibaba Cloud SG stack with FastAPI, Elasticsearch, Redis and Prometheus; 140/140 bounded loopback checks passed with P95 1.911 s
+- Economic figures are historical spot-market proxies with a user-supplied cycling cost, excluding CAPEX, fixed O&M, network fees, FCAS and investment returns
+- Repository: [`australian-energy-market-intelligence-agent`](https://github.com/larry-liyuanfan/australian-energy-market-intelligence-agent)
 
 ### 3. Climate Claim Verification RAG
 
 Reproducible search-and-ranking laboratory for climate claim verification, separated from unsupported leaderboard claims.
 
 - Verified Spartan build over 1,208,827 evidence passages: BM25 in 40.33 s (126.3 MB) and Qwen3-Embedding-0.6B 1,024-d vectors + FAISS FlatIP in 1,696.77 s (5.13 GB artifact, 21.54 GB MaxRSS)
-- BM25 and dense ANN recall, reciprocal-rank fusion, LambdaMART features, hard-negative mining, and cross-encoder reranking adapters
-- Evidence selection, calibrated claim classification, and selective abstention
-- Retrieval, end-to-end, latency, index-size, and paired-bootstrap evaluation
-- CLI and Spartan/Slurm assets for full-data indexing and controlled ablation studies
-- HNSW/IVF-PQ and fixed-dev LTR effects remain pending; no unverified relevance lift or leaderboard rank is claimed
+- HNSW retained 0.9961 Recall@5 versus FlatIP ground truth while reaching 3,060.64 in-memory batch QPS and 12.88 ms single-query P50 on the fixed 154-query/32-thread benchmark
+- BM25+dense RRF lifted fixed-dev Recall@5/Evidence F1 from 0.1721/0.1168 to 0.2709/0.1785
+- Balanced RRF/Qwen3-Reranker-4B fusion over 7,700 pairs reached 0.3153/0.2131; four 5,000-sample paired intervals versus RRF were positive, with P95 4.82 s/query
+- HNSW+RRF remains the latency default; 4B fusion is an offline dev-selection profile, not independent-test generalisation. IVF-PQ and LambdaMART failed the quality gate; no leaderboard claim is made
+- 28 tests plus CLI and Spartan/Slurm assets for reproducible indexing and ablation
 - Repository: [`climate-claim-verification-rag`](https://github.com/larry-liyuanfan/climate-claim-verification-rag)
 
 ### 4. Wildfire Burn-window Decision Support
@@ -44,9 +46,11 @@ Deterministic, explainable domain tools for agents operating over large spatiote
 
 - Typed prescription rules, temporal alignment, continuous-window extraction, limiting-factor attribution, and sensitivity analysis
 - Xarray/Dask data pipeline with checkpointable Spartan execution assets
-- Greedy, nominal MILP, and max-min robust MILP scheduling with an independent feasibility checker
-- In a 30-seed synthetic benchmark, nominal MILP improved mean utility by 1.79% over the best greedy baseline (bootstrap mean 95% interval 0.91%-2.77%); robust scheduling reduced mobilisation-penalty units by 2.55% (synthetic operational proxies, not dollars or realised fire-risk reduction)
-- Golden fixtures and 35 tests for tool schemas, rule boundaries, and feasible schedules
+- Greedy, nominal, max-min and empirical lower-tail CVaR MILPs with independent feasibility checks
+- In a 30-seed synthetic benchmark, nominal MILP improved mean utility by 1.79% over the best greedy (95% interval 0.91%-2.77%); CVaR improved mean held-out P05 utility by 1.42% versus nominal (95% interval 0.25%-3.25%)
+- Agent-facing rejection reason codes and neighbouring crew-capacity counterfactuals explain scheduling trade-offs; their deltas are not LP shadow prices, causal effects or money
+- Golden fixtures and 38 tests for schemas, rule boundaries, no-lookahead alignment and feasible schedules
+- Results are synthetic utility evidence, not dollars, realised hectares or fire-risk reduction; real VicClim6 processing remains blocked on authorised Mediaflux access
 - Repository: [`wildfire-burn-window-decision-support`](https://github.com/larry-liyuanfan/wildfire-burn-window-decision-support)
 
 ### 5. Fulfillment Optimization Decision Support
