@@ -36,7 +36,7 @@ Reproducible search-and-ranking laboratory for climate claim verification, separ
 - HNSW retained 0.9961 Recall@5 versus FlatIP ground truth while reaching 3,060.64 in-memory batch QPS and 12.88 ms single-query P50 on the fixed 154-query/32-thread benchmark
 - BM25+dense RRF lifted fixed-dev Recall@5/Evidence F1 from 0.1721/0.1168 to 0.2709/0.1785
 - Balanced RRF/Qwen3-Reranker-4B fusion over 7,700 pairs reached 0.3153/0.2131; four 5,000-sample paired intervals versus RRF were positive, with P95 4.82 s/query
-- HNSW+RRF remains the latency default; 4B fusion is an offline dev-selection profile, not independent-test generalisation. IVF-PQ and LambdaMART failed the quality gate; no leaderboard claim is made
+- HNSW+RRF remains the latency default; 4B fusion is an offline dev-selection profile, not independent-test generalisation. An 8B same-pilot gate tied F1/Recall, slightly lowered MRR and raised P95 by 60.8%, so no full 8B run was submitted. IVF-PQ and LambdaMART also failed quality gates; no leaderboard claim is made
 - 28 tests plus CLI and Spartan/Slurm assets for reproducible indexing and ablation
 - Repository: [`climate-claim-verification-rag`](https://github.com/larry-liyuanfan/climate-claim-verification-rag)
 
@@ -46,7 +46,7 @@ Deterministic, explainable domain tools for agents operating over large spatiote
 
 - Typed prescription rules, temporal alignment, continuous-window extraction, limiting-factor attribution, and sensitivity analysis
 - Xarray/Dask data pipeline with checkpointable Spartan execution assets
-- Greedy, nominal, max-min and empirical lower-tail CVaR MILPs with independent feasibility checks
+- Greedy, nominal, max-min and empirical lower-tail CVaR MILPs with independent objective/feasibility certificates plus HiGHS optimality-gap/bound metadata
 - In a 30-seed synthetic benchmark, nominal MILP improved mean utility by 1.79% over the best greedy (95% interval 0.91%-2.77%); CVaR improved mean held-out P05 utility by 1.42% versus nominal (95% interval 0.25%-3.25%)
 - Agent-facing rejection reason codes and neighbouring crew-capacity counterfactuals explain scheduling trade-offs; their deltas are not LP shadow prices, causal effects or money
 - Golden fixtures and 38 tests for schemas, rule boundaries, no-lookahead alignment and feasible schedules
