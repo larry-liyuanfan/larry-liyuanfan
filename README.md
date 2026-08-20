@@ -25,6 +25,7 @@ Agentic decision-support system over official Australian National Electricity Ma
 - Eight typed tools, bounded state-machine recovery and durable traces; the 80 real-window + 20 fault-fixture suite achieved 100% task/schema/citation/logical-tool/recovery success
 - Four seasonal folds across five regions produced 560 out-of-time region-days. At 0/25/50/100 AUD per discharged MWh, the five-region mean annualised operating-margin proxy was AUD 76.6k/53.2k/41.0k/24.2k per MW-year; all five regional P05 values were negative at 50 AUD/MWh
 - Decision-aware gates exposed prediction/operation mismatch: LightGBM won MAE in 9/20 folds but realised BESS net proxy in 17/20, with only 8/20 rank agreements. Nested CVaR selected a non-point policy three times, but all three worsened unseen tail margin, so the risk-improvement claim was rejected
+- A second exact-SHA five-region run reproduced the published 50 AUD/MWh projection exactly while evaluating the full 0/25/50/100 cost grid; this is reproducibility evidence, not another gain
 - Alibaba Cloud SG stack with FastAPI, Elasticsearch, Redis and Prometheus; 140/140 bounded loopback checks passed with P95 1.911 s
 - Economic figures are historical spot-market proxies with a user-supplied cycling cost, excluding CAPEX, fixed O&M, network fees, FCAS and investment returns
 - Repository: [`australian-energy-market-intelligence-agent`](https://github.com/larry-liyuanfan/australian-energy-market-intelligence-agent)
@@ -39,7 +40,8 @@ Reproducible search-and-ranking laboratory for climate claim verification, separ
 - BM25+dense RRF lifted fixed-dev Recall@5/Evidence F1 from 0.1721/0.1168 to 0.2709/0.1785
 - Balanced RRF/Qwen3-Reranker-4B fusion over 7,700 pairs reached 0.3153/0.2131; four 5,000-sample paired intervals versus RRF were positive, with P95 4.82 s/query
 - HNSW+RRF remains the latency default; 4B fusion is an offline dev-selection profile, not independent-test generalisation. An 8B same-pilot gate tied F1/Recall, slightly lowered MRR and raised P95 by 60.8%, so no full 8B run was submitted. IVF-PQ and LambdaMART also failed quality gates; no leaderboard claim is made
-- 30 tests plus CLI and Spartan/Slurm assets for reproducible indexing and ablation
+- The next retained-0.6B gate uses claim-grouped mined hard negatives, InfoNCE and LoRA with false-negative controls; the 20-step Spartan contract pilot is implemented but unrun, so no adaptation gain is claimed
+- 34 tests plus CLI and Spartan/Slurm assets for reproducible indexing and ablation
 - Repository: [`climate-claim-verification-rag`](https://github.com/larry-liyuanfan/climate-claim-verification-rag)
 
 ### 4. Wildfire Burn-window Decision Support
