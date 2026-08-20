@@ -24,6 +24,7 @@ Agentic decision-support system over official Australian National Electricity Ma
 - Indexed 735 AEMO/AER report chunks; hybrid+rerank reached source-routing MRR 0.967 and Recall@5 1.00 on a 20-query benchmark (BM25 MRR 0.892)
 - Eight typed tools, bounded state-machine recovery and durable traces; the 80 real-window + 20 fault-fixture suite achieved 100% task/schema/citation/logical-tool/recovery success
 - Four seasonal folds across five regions produced 560 out-of-time region-days. At 0/25/50/100 AUD per discharged MWh, the five-region mean annualised operating-margin proxy was AUD 76.6k/53.2k/41.0k/24.2k per MW-year; all five regional P05 values were negative at 50 AUD/MWh
+- Decision-aware gates exposed prediction/operation mismatch: LightGBM won MAE in 9/20 folds but realised BESS net proxy in 17/20, with only 8/20 rank agreements. Nested CVaR selected a non-point policy three times, but all three worsened unseen tail margin, so the risk-improvement claim was rejected
 - Alibaba Cloud SG stack with FastAPI, Elasticsearch, Redis and Prometheus; 140/140 bounded loopback checks passed with P95 1.911 s
 - Economic figures are historical spot-market proxies with a user-supplied cycling cost, excluding CAPEX, fixed O&M, network fees, FCAS and investment returns
 - Repository: [`australian-energy-market-intelligence-agent`](https://github.com/larry-liyuanfan/australian-energy-market-intelligence-agent)
@@ -33,11 +34,12 @@ Agentic decision-support system over official Australian National Electricity Ma
 Reproducible search-and-ranking laboratory for climate claim verification, separated from unsupported leaderboard claims.
 
 - Verified Spartan build over 1,208,827 evidence passages: BM25 in 40.33 s (126.3 MB) and Qwen3-Embedding-0.6B 1,024-d vectors + FAISS FlatIP in 1,696.77 s (5.13 GB artifact, 21.54 GB MaxRSS)
+- A same-dimension 4B dense-encoder resource gate reduced sampled Recall@5 from 0.950 to 0.925, tied F1/MRR, encoded about 7.1x slower and used about 5.5x the peak Torch GPU memory; the full rebuild was deliberately stopped
 - HNSW retained 0.9961 Recall@5 versus FlatIP ground truth while reaching 3,060.64 in-memory batch QPS and 12.88 ms single-query P50 on the fixed 154-query/32-thread benchmark
 - BM25+dense RRF lifted fixed-dev Recall@5/Evidence F1 from 0.1721/0.1168 to 0.2709/0.1785
 - Balanced RRF/Qwen3-Reranker-4B fusion over 7,700 pairs reached 0.3153/0.2131; four 5,000-sample paired intervals versus RRF were positive, with P95 4.82 s/query
 - HNSW+RRF remains the latency default; 4B fusion is an offline dev-selection profile, not independent-test generalisation. An 8B same-pilot gate tied F1/Recall, slightly lowered MRR and raised P95 by 60.8%, so no full 8B run was submitted. IVF-PQ and LambdaMART also failed quality gates; no leaderboard claim is made
-- 28 tests plus CLI and Spartan/Slurm assets for reproducible indexing and ablation
+- 30 tests plus CLI and Spartan/Slurm assets for reproducible indexing and ablation
 - Repository: [`climate-claim-verification-rag`](https://github.com/larry-liyuanfan/climate-claim-verification-rag)
 
 ### 4. Wildfire Burn-window Decision Support
@@ -49,8 +51,8 @@ Deterministic, explainable domain tools for agents operating over large spatiote
 - Greedy, nominal, max-min and empirical lower-tail CVaR MILPs with independent objective/feasibility certificates plus HiGHS optimality-gap/bound metadata
 - In a 30-seed synthetic benchmark, nominal MILP improved mean utility by 1.79% over the best greedy (95% interval 0.91%-2.77%); CVaR improved mean held-out P05 utility by 1.42% versus nominal (95% interval 0.25%-3.25%)
 - Agent-facing rejection reason codes and neighbouring crew-capacity counterfactuals explain scheduling trade-offs; their deltas are not LP shadow prices, causal effects or money
-- Golden fixtures and 38 tests for schemas, rule boundaries, no-lookahead alignment and feasible schedules
-- Results are synthetic utility evidence, not dollars, realised hectares or fire-risk reduction; real VicClim6 processing remains blocked on authorised Mediaflux access
+- Golden fixtures and 39 tests for schemas, rule boundaries, no-lookahead alignment and feasible schedules
+- Results are synthetic utility evidence, not dollars, realised hectares or fire-risk reduction; Mediaflux lacks an authorised token/mount and the official Viewer also requires login/registration, so real VicClim6 processing remains data-access-blocked
 - Repository: [`wildfire-burn-window-decision-support`](https://github.com/larry-liyuanfan/wildfire-burn-window-decision-support)
 
 ### 5. Fulfillment Optimization Decision Support
