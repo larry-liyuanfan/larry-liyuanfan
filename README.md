@@ -20,15 +20,14 @@ Flagship OTA application that turns travel images, reviews, and user constraints
 
 Agentic decision-support system over official Australian National Electricity Market data: market retrieval, official-evidence search, price-risk forecasting, constrained battery dispatch, economic sensitivity and auditable answers.
 
-- Validated 525,600 five-minute AEMO rows across five NEM regions and repaired one incomplete daily archive only from official monthly MMSDM data
-- Indexed 735 AEMO/AER report chunks; hybrid+rerank reached source-routing MRR 0.967 and Recall@5 1.00 on a 20-query benchmark (BM25 MRR 0.892)
+- Validated 1,051,200 five-minute AEMO rows across five NEM regions and two years; interval-ending day semantics, official monthly MMSDM repair, duplicate/gap gates and hashes keep the time axis fail-closed
+- Indexed 735 AEMO/AER report chunks; hybrid retrieval reached source-routing MRR/Recall@5 1.00/1.00 and author-curated exact-passage MRR/Recall@5 0.80/1.00, while the stronger BM25 passage MRR 0.875 is retained rather than hidden
 - Eight typed tools, bounded state-machine recovery and durable traces; the 80 real-window + 20 fault-fixture suite achieved 100% task/schema/citation/logical-tool/recovery success
-- Four seasonal folds across five regions produced 560 out-of-time region-days. At 0/25/50/100 AUD per discharged MWh, the five-region mean annualised operating-margin proxy was AUD 76.6k/53.2k/41.0k/24.2k per MW-year; all five regional P05 values were negative at 50 AUD/MWh
-- Decision-aware gates exposed prediction/operation mismatch: LightGBM won MAE in 9/20 folds but realised BESS net proxy in 17/20, with only 8/20 rank agreements. Nested CVaR selected a non-point policy three times, but all three worsened unseen tail margin, so the risk-improvement claim was rejected
-- A second exact-SHA five-region run reproduced the published 50 AUD/MWh projection exactly while evaluating the full 0/25/50/100 cost grid; this is reproducibility evidence, not another gain
-- Paper-to-production challenger gates evaluated Chronos-2 over 40,320 out-of-time intervals, then added past-only market covariates, known-future calendar features and split-conformal intervals. The covariate model improved SA1 development MAE by 3.91% versus univariate Chronos-2 but lost AUD 1,031.39 to same-information LightGBM in the BESS proxy, so cross-region expansion was stopped
+- A two-year rolling gate produced 1,120 out-of-time region-days: LightGBM won MAE in only 15/40 folds, but forecast-driven MILP dispatch beat the threshold rule in 39/40; the five-region mean historical proxy was AUD 84,792 versus AUD 23,279/MW-year, with a paired-fold mean-delta 95% interval of AUD 3,079.62–6,912.10
+- Decision-aware release gates rejected scenario-CVaR despite a positive mean because unseen fold-tail lift was negative, and rejected Chronos-2 after only 2/5 regions improved and the moving-block economic interval crossed zero
+- A pinned MiniCheck-Flan-T5-Large sentence-support gate rejected 90% of controlled counterfactuals but recalled only 45% of supported official claims (67.5% balanced accuracy), so the semantic verifier remains offline rather than being promoted on model reputation
 - Alibaba Cloud SG stack with FastAPI, Elasticsearch, Redis and Prometheus; 140/140 bounded loopback checks passed with P95 1.911 s
-- 106 tests plus Ruff, strict mypy, dependency audit, Prometheus validation and secret scanning pass in GitHub Actions
+- 111 tests plus Ruff, strict mypy, dependency audit, Prometheus validation and secret scanning pass in GitHub Actions
 - Economic figures are historical spot-market proxies with a user-supplied cycling cost, excluding CAPEX, fixed O&M, network fees, FCAS and investment returns
 - Repository: [`australian-energy-market-intelligence-agent`](https://github.com/larry-liyuanfan/australian-energy-market-intelligence-agent)
 
