@@ -26,7 +26,9 @@ Agentic decision-support system over official Australian National Electricity Ma
 - Four seasonal folds across five regions produced 560 out-of-time region-days. At 0/25/50/100 AUD per discharged MWh, the five-region mean annualised operating-margin proxy was AUD 76.6k/53.2k/41.0k/24.2k per MW-year; all five regional P05 values were negative at 50 AUD/MWh
 - Decision-aware gates exposed prediction/operation mismatch: LightGBM won MAE in 9/20 folds but realised BESS net proxy in 17/20, with only 8/20 rank agreements. Nested CVaR selected a non-point policy three times, but all three worsened unseen tail margin, so the risk-improvement claim was rejected
 - A second exact-SHA five-region run reproduced the published 50 AUD/MWh projection exactly while evaluating the full 0/25/50/100 cost grid; this is reproducibility evidence, not another gain
+- Paper-to-production challenger gates evaluated Chronos-2 over 40,320 out-of-time intervals, then added past-only market covariates, known-future calendar features and split-conformal intervals. The covariate model improved SA1 development MAE by 3.91% versus univariate Chronos-2 but lost AUD 1,031.39 to same-information LightGBM in the BESS proxy, so cross-region expansion was stopped
 - Alibaba Cloud SG stack with FastAPI, Elasticsearch, Redis and Prometheus; 140/140 bounded loopback checks passed with P95 1.911 s
+- 106 tests plus Ruff, strict mypy, dependency audit, Prometheus validation and secret scanning pass in GitHub Actions
 - Economic figures are historical spot-market proxies with a user-supplied cycling cost, excluding CAPEX, fixed O&M, network fees, FCAS and investment returns
 - Repository: [`australian-energy-market-intelligence-agent`](https://github.com/larry-liyuanfan/australian-energy-market-intelligence-agent)
 
@@ -39,9 +41,10 @@ Reproducible search-and-ranking laboratory for climate claim verification, separ
 - HNSW retained 0.9961 Recall@5 versus FlatIP ground truth while reaching 3,060.64 in-memory batch QPS and 12.88 ms single-query P50 on the fixed 154-query/32-thread benchmark
 - BM25+dense RRF lifted fixed-dev Recall@5/Evidence F1 from 0.1721/0.1168 to 0.2709/0.1785
 - Balanced RRF/Qwen3-Reranker-4B fusion over 7,700 pairs reached 0.3153/0.2131; four 5,000-sample paired intervals versus RRF were positive, with P95 4.82 s/query
-- HNSW+RRF remains the latency default; 4B fusion is an offline dev-selection profile, not independent-test generalisation. An 8B same-pilot gate tied F1/Recall, slightly lowered MRR and raised P95 by 60.8%, so no full 8B run was submitted. IVF-PQ and LambdaMART also failed quality gates; no leaderboard claim is made
-- The next retained-0.6B gate uses claim-grouped mined hard negatives, InfoNCE and LoRA with false-negative controls; the 20-step Spartan contract pilot is implemented but unrun, so no adaptation gain is claimed
-- 34 tests plus CLI and Spartan/Slurm assets for reproducible indexing and ablation
+- HNSW+RRF remains the latency default; 4B fusion is an offline dev-selection profile, not independent-test generalisation. An 8B same-pilot gate tied F1/Recall, slightly lowered MRR and raised P95 by 60.8%, so no full 8B run was submitted. IVF-PQ failed its quality gate; no leaderboard claim is made
+- Claim-grouped hard-negative InfoNCE/LoRA adaptation retained the 0.6B encoder and improved full-corpus official-dev Recall@5 from 0.2793 to 0.2970, MRR from 0.3633 to 0.3869 and F1 from 0.07253 to 0.07544; all paired intervals were positive
+- Candidate-agreement and text-aware routers cut 4B calls but preserved too little of the quality gain, so neither was promoted. The old LambdaMART result was invalidated after finding injected, unretrieved positives; a candidate-supported correction is under exact-SHA evaluation, with no new LTR quality claim yet
+- 46 tests plus CLI and Spartan/Slurm assets for reproducible indexing, adaptation and ablation
 - Repository: [`climate-claim-verification-rag`](https://github.com/larry-liyuanfan/climate-claim-verification-rag)
 
 ### 4. Wildfire Burn-window Decision Support
@@ -53,8 +56,9 @@ Deterministic, explainable domain tools for agents operating over large spatiote
 - Greedy, nominal, max-min and empirical lower-tail CVaR MILPs with independent objective/feasibility certificates plus HiGHS optimality-gap/bound metadata
 - In a 30-seed synthetic benchmark, nominal MILP improved mean utility by 1.79% over the best greedy (95% interval 0.91%-2.77%); CVaR improved mean held-out P05 utility by 1.42% versus nominal (95% interval 0.25%-3.25%)
 - Agent-facing rejection reason codes and neighbouring crew-capacity counterfactuals explain scheduling trade-offs; their deltas are not LP shadow prices, causal effects or money
-- Golden fixtures and 39 tests for schemas, rule boundaries, no-lookahead alignment and feasible schedules
-- Results are synthetic utility evidence, not dollars, realised hectares or fire-risk reduction; Mediaflux lacks an authorised token/mount and the official Viewer also requires login/registration, so real VicClim6 processing remains data-access-blocked
+- Golden fixtures and 49 tests for schemas, rule boundaries, no-lookahead alignment, checkpoint/resume and feasible schedules
+- A full-year public ARCO-ERA5 screen evaluated 8,283,312 cell-hours and retained 1,391,401 weather-only necessary-condition passes; these are not burn windows or safety claims
+- The private Group44 code is staged on Spartan at exact commit `8724a295` with a reusable runtime image. Results remain synthetic utility or public-reanalysis scale evidence—not dollars, realised hectares or fire-risk reduction—because `yzhang3504` still lacks read access to the located `punim1257/Group44` VicClim6 path
 - Repository: [`wildfire-burn-window-decision-support`](https://github.com/larry-liyuanfan/wildfire-burn-window-decision-support)
 
 ### 5. Fulfillment Optimization Decision Support
